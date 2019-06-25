@@ -1,0 +1,29 @@
+.main-view{
+	background-color: gray;
+	width: 400px;
+	height: 400px;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.sub-view{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+
+	/* width: 365.5px; */
+	/* height: 175.5px; */
+	/* background: url(../images/back_image.png) center no-repeat; */
+	/* background-size: 100% 100%; */
+	
+}
+
+.sub-span{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+}
