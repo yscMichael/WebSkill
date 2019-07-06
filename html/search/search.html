@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/weui.min.css">    
+    <link rel="stylesheet" href="../../css/search.css">
+    <title>登录</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- 1、头部搜索区域 -->
+            <div class="content-head">
+                <!-- 1.1、搜索 -->
+                <div class="search-header">
+                    <div class="search-box">
+                        <span class="search-image"></span>
+                        <input class="search-input"
+                               placeholder="请输入员工姓名，不超过10个字"></input>
+                    </div>
+                    <div class="search-button" onclick="queryStaff()">查询</div>
+                </div>
+                <!-- 1.2、查询结果标题 -->
+                <div id="titleId" class="result-title hideTitle">&nbsp;&nbsp;查询结果（点击记录可选中）：</div>
+            </div>
+            <!-- 2、列表区域 -->
+            <div id="contentId" class="content-list hideTitle">
+                <!--2.1、有数据 -->
+                <ul id="list">
+                </ul>
+                <!-- 2.2、无数据 -->
+                <div id="no-data">
+                    <div class="no-data-image"></div>
+                    <div class="no-data-title">查无此人，请检查姓名输入是否正确</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/rem.js"></script>
+<script src="../../js/weui.min.js"></script>
+<script>
+    //文档就绪事件
+    $(document).ready(function(){
+        
+    });
+
+    //点击查询按钮
+    function queryStaff(){
+       console.log('点击查询按钮-----');
+       //1、检测输入是否为空
+       var obj = $(".search-input").val();
+       console.log('----------');
+       console.log(obj);
+       if(typeof obj == "undefined" || obj == null || obj == ""){
+          weui.topTips('输入框不能为空');
+          return;
+       }
+       //2、网络请求
+       if(obj == 0){
+        this.reduceListData();
+       }else{
+        this.addListData();
+       }
+    };
+
+    //点击列表item
+    $("ul#list").on("click","li",function(){      
+        //获取当前点击li 的下标
+        let index = $(this).index() + 1;
+        $(this).addClass("current-choose").siblings().removeClass("current-choose");
+        //将数据返回上一个界面
+        console.log(index);
+    });
+
+    // 以下是测试数据
+    // 增加数据
+    function addListData(){
+         $("#no-data").hide();
+         console.log('点击+++++++++++++');
+         //1、获取数据
+         var userList = [11,
+         22,
+         33,
+         44,
+         555555,
+         66666666,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777,
+         777777777777];
+        //2、显示标题
+        $("#titleId").removeClass("hideTitle");
+        $("#contentId").removeClass("hideTitle");
+         //3、插入数据
+         $.each(userList,function(i,item){
+            $('#list').append('<li class="search-list">' +  item + '</div></li>');
+　　      });
+    };
+
+    // 减少数据
+    function reduceListData(){
+        $("#list").empty();
+        $("#no-data").show();
+    };
+</script>
