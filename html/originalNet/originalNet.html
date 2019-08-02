@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js原生网络请求</title>
+</head>
+<body>
+    <button type="button" onclick="myFunction()">发起请求</button>      
+</body>
+<script>
+    function myFunction()
+    {
+        var xmlhttp = null;
+        //1、初始化网络请求对象
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else if(window.ActiveXObject){
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");  
+        }
+        //2、判断XMLHttpRequest是否可以使用
+        if(xmlhttp != null){
+            sendNetWork();
+        }else{
+            alert('当前浏览器不支持XMLHttpRequest');
+        }
+    }
+
+    function sendNetWork()
+    {
+        
+    }
+</script>
+
+</html>
